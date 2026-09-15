@@ -291,53 +291,33 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
 .intro__sign .btn{flex:none}
 
 /* ============================================================
-   BENTO FEATURE GRID: mixed tile sizes, whole tile is a link
+   FEATURE GRID: six equal cards, whole card is one link
    ============================================================ */
 .bento{background:var(--slate-100);position:relative;overflow:hidden}
 .bento::before{content:"";position:absolute;top:-180px;right:-180px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(51,102,178,.10),transparent 68%)}
-.bento__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.bento__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative}
 @media (max-width:1023px){.bento__grid{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:599px){.bento__grid{grid-template-columns:1fr}}
+@media (max-width:639px){.bento__grid{grid-template-columns:1fr}}
 .tile{
-  display:flex;flex-direction:column;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;height:100%;position:relative;overflow:hidden;
   background:var(--white);border:1px solid var(--slate-200);border-radius:var(--r-lg);
-  padding:clamp(24px,2.6vw,32px);box-shadow:var(--sh-xs);
+  padding:clamp(26px,2.8vw,34px);box-shadow:var(--sh-xs);
   transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .5s var(--ease);
 }
+.tile::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--grad-blue);transform:scaleX(0);transform-origin:left;transition:transform .55s var(--ease)}
 .tile::after{content:"";position:absolute;right:-70px;bottom:-70px;width:210px;height:210px;border-radius:50%;background:radial-gradient(circle,rgba(51,102,178,.10),transparent 70%);opacity:0;transition:opacity .55s var(--ease)}
 .tile:hover{transform:translateY(-8px);box-shadow:var(--sh-lg);border-color:var(--blue-300)}
+.tile:hover::before{transform:scaleX(1)}
 .tile:hover::after{opacity:1}
 .tile:focus-visible{outline:3px solid var(--blue-500);outline-offset:4px}
-.tile__ico{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:var(--blue-100);color:var(--blue-500);margin-bottom:20px;position:relative;z-index:1;transition:background .5s var(--ease),color .5s var(--ease),transform .5s var(--ease)}
+.tile__ico{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;background:var(--blue-100);color:var(--blue-500);margin-bottom:20px;position:relative;z-index:1;transition:background .5s var(--ease),color .5s var(--ease),transform .5s var(--ease)}
 .tile__ico svg{width:25px;height:25px}
 .tile:hover .tile__ico{background:var(--grad-blue);color:var(--white);transform:rotate(-7deg) scale(1.06)}
 .tile h3{margin-bottom:10px;position:relative;z-index:1}
-.tile p{font-size:.95rem;margin:0 0 18px;position:relative;z-index:1;color:var(--slate-500)}
+.tile p{font-size:.95rem;margin:0 0 20px;position:relative;z-index:1;color:var(--slate-500)}
 .tile__more{margin-top:auto;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:var(--blue-500);position:relative;z-index:1}
 .tile__more svg{width:15px;height:15px;transition:transform .4s var(--ease)}
 .tile:hover .tile__more svg{transform:translateX(6px)}
-
-/* Feature tile: the large one leads with a screenshot */
-.tile--lead{grid-column:span 2;grid-row:span 2;background:var(--grad-deep);border-color:var(--blue-700)}
-.tile--lead h3{color:var(--white);font-size:clamp(1.4rem,2vw,1.85rem)}
-.tile--lead p{color:var(--slate-300);font-size:1rem}
-.tile--lead .tile__ico{background:rgba(143,174,223,.16);color:var(--coral-400)}
-.tile--lead:hover .tile__ico{background:var(--grad-coral);color:var(--white)}
-.tile--lead .tile__more{color:var(--coral-400)}
-.tile--lead:hover{border-color:var(--coral-500)}
-.tile__shot{position:absolute;inset:0;z-index:0;opacity:.20;overflow:hidden;border-radius:var(--r-lg)}
-.tile__shot img{width:100%;height:100%;object-fit:cover;object-position:top center}
-.tile__shot::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,23,40,.35) 0%,rgba(11,23,40,.95) 72%)}
-.tile--wide{grid-column:span 2}
-@media (max-width:1023px){
-  .tile--lead{grid-column:span 2;grid-row:auto;min-height:340px}
-  .tile--wide{grid-column:span 2}
-}
-@media (max-width:599px){
-  .tile--lead,.tile--wide{grid-column:span 1}
-  .tile--lead{min-height:320px}
-}
-.tile__badge{position:absolute;top:22px;right:24px;z-index:2;font-family:var(--font-display);font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--coral-400);background:rgba(249,139,132,.14);border:1px solid rgba(249,139,132,.3);padding:6px 12px;border-radius:var(--r-pill)}
 
 /* ============================================================
    PRODUCT TABS: one panel that swaps, instead of three splits
@@ -494,26 +474,30 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
    ============================================================ */
 .contact{background:var(--slate-100);position:relative;overflow:hidden}
 .contact::before{content:"";position:absolute;right:-200px;top:-200px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(51,102,178,.10),transparent 68%)}
-.ctiles{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;position:relative;margin-bottom:clamp(30px,3.4vw,46px)}
-@media (max-width:1023px){.ctiles{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:539px){.ctiles{grid-template-columns:1fr}}
-.ctile{
-  background:var(--white);border:1px solid var(--slate-200);border-radius:var(--r-lg);
-  padding:26px 24px;text-align:center;box-shadow:var(--sh-xs);
-  display:flex;flex-direction:column;align-items:center;
-  transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .45s var(--ease);
-}
-.ctile:hover{transform:translateY(-7px);box-shadow:var(--sh-md);border-color:var(--coral-300)}
-.ctile__ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:var(--blue-100);color:var(--blue-500);margin-bottom:16px;transition:background .45s var(--ease),color .45s var(--ease),transform .45s var(--ease)}
-.ctile:hover .ctile__ico{background:var(--grad-coral);color:var(--white);transform:rotate(-7deg) scale(1.06)}
-.ctile__ico svg{width:22px;height:22px}
-.ctile b{display:block;font-size:.71rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--slate-500);margin-bottom:8px}
-.ctile a,.ctile span{display:block;font-family:var(--font-display);font-weight:600;font-size:1rem;color:var(--blue-900);line-height:1.55}
-.ctile a:hover{color:var(--coral-600)}
+.contact__grid{display:grid;grid-template-columns:.86fr 1.14fr;gap:clamp(26px,3.2vw,46px);position:relative;align-items:start}
+.contact__grid>*{min-width:0}
+@media (max-width:1023px){.contact__grid{grid-template-columns:1fr}}
 
-.form-wrap{max-width:960px;margin-inline:auto;position:relative}
+.info-card{background:var(--grad-deep);color:var(--slate-300);border-radius:var(--r-xl);padding:clamp(28px,3.2vw,44px);box-shadow:var(--sh-lg);position:relative;overflow:hidden}
+.info-card::after{content:"";position:absolute;right:-90px;top:-90px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(51,102,178,.40),transparent 68%)}
+.info-card h3{color:var(--white);font-size:1.45rem;margin-bottom:9px;position:relative}
+.info-card>p{color:var(--slate-400);font-size:.95rem;position:relative}
+.info-list{display:grid;gap:7px;margin-top:24px;position:relative}
+.info-row{display:flex;gap:15px;align-items:flex-start;padding:14px;border-radius:var(--r-md);transition:background .4s var(--ease),transform .4s var(--ease)}
+.info-row:hover{background:rgba(143,174,223,.10);transform:translateX(5px)}
+.info-row__ico{width:44px;height:44px;border-radius:13px;flex:none;display:grid;place-items:center;background:var(--blue-800);color:var(--coral-400);transition:background .4s var(--ease),color .4s var(--ease)}
+.info-row:hover .info-row__ico{background:var(--coral-500);color:var(--white)}
+.info-row__ico svg{width:19px;height:19px}
+.info-row b{display:block;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--slate-500);margin-bottom:5px}
+.info-row>div a,.info-row>div span{color:var(--white);font-weight:600;font-size:.98rem;line-height:1.55;display:block}
+.info-row>div a:hover{color:var(--coral-400)}
+.info-card__social{display:flex;gap:10px;margin-top:26px;padding-top:24px;border-top:1px solid rgba(143,174,223,.18);position:relative}
+.info-card__social a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--blue-800);color:var(--slate-200);transition:background .35s var(--ease),transform .35s var(--ease),color .35s var(--ease)}
+.info-card__social a:hover{background:var(--coral-500);color:var(--white);transform:translateY(-4px)}
+.info-card__social svg{width:17px;height:17px}
+
 .form-card{background:var(--white);border:1px solid var(--slate-200);border-radius:var(--r-xl);padding:clamp(28px,3.2vw,48px);box-shadow:var(--sh-md)}
-.form-card__head{text-align:center;margin-bottom:28px}
+.form-card__head{margin-bottom:26px}
 .form-card__head h3{font-size:1.5rem;margin-bottom:6px}
 .form-card__head p{color:var(--slate-500);font-size:.96rem;margin:0}
 .form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:19px}
@@ -537,7 +521,7 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--blue-500);background:var(--white);box-shadow:0 0 0 4px rgba(51,102,178,.14)}
 .consent{display:flex;gap:12px;align-items:flex-start;grid-column:1/-1;font-size:.88rem;color:var(--slate-500)}
 .consent input{width:19px;height:19px;flex:none;margin-top:3px;accent-color:var(--blue-500);cursor:pointer}
-.form-note{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--slate-500);font-weight:600;justify-content:center}
+.form-note{grid-column:1/-1;display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--slate-500);font-weight:600}
 .form-note svg{width:15px;height:15px;color:var(--blue-500)}
 .form-alert{grid-column:1/-1;display:none;align-items:center;gap:11px;background:var(--blue-100);color:var(--blue-800);border-radius:var(--r-sm);padding:15px 18px;font-weight:700;font-size:.92rem;border-left:4px solid var(--blue-500)}
 .form-alert.is-shown{display:flex;animation:drawerIn .5s var(--ease-out) backwards}
@@ -547,16 +531,15 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
 .footer{background:var(--blue-950);color:var(--slate-400);padding-top:clamp(56px,6.2vw,88px);position:relative;overflow:hidden}
 .footer::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--blue-500),var(--coral-500),transparent)}
 .footer__glow{position:absolute;width:560px;height:560px;border-radius:50%;filter:blur(120px);background:rgba(27,53,96,.6);left:-200px;bottom:-280px;pointer-events:none}
-.footer__top{display:flex;align-items:flex-start;justify-content:space-between;gap:34px;flex-wrap:wrap;padding-bottom:clamp(34px,4vw,52px);border-bottom:1px solid rgba(143,174,223,.14);position:relative}
-.footer__brandcol{max-width:430px}
+.footer__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1.25fr;gap:clamp(28px,3.4vw,52px);position:relative}
+@media (max-width:1023px){.footer__grid{grid-template-columns:1fr 1fr}}
+@media (max-width:599px){.footer__grid{grid-template-columns:1fr}}
 .footer__about{margin-top:18px;font-size:.93rem;color:var(--slate-400)}
-.footer__social{display:flex;gap:10px;margin-top:20px}
+@media (min-width:1024px){.footer__about{max-width:380px}}
+.footer__social{display:flex;gap:10px;margin-top:22px}
 .footer__social a{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:var(--blue-900);color:var(--slate-300);transition:background .35s var(--ease),transform .35s var(--ease),color .35s var(--ease)}
 .footer__social a:hover{background:var(--coral-500);color:var(--white);transform:translateY(-4px)}
 .footer__social svg{width:16px;height:16px}
-.footer__cols{display:grid;grid-template-columns:repeat(3,minmax(150px,1fr));gap:clamp(24px,3vw,48px);padding-top:clamp(34px,4vw,52px);position:relative}
-@media (max-width:767px){.footer__cols{grid-template-columns:1fr 1fr}}
-@media (max-width:479px){.footer__cols{grid-template-columns:1fr}}
 .footer h4{color:var(--white);font-size:.82rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:18px}
 .footer__links{display:grid;gap:11px}
 .footer__links a{font-size:.93rem;color:var(--slate-400);font-weight:500;display:inline-flex;align-items:center;gap:9px;transition:color .3s var(--ease)}
@@ -798,47 +781,45 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
     </div>
 
     <div class="bento__grid">
-      <a href="#platform" class="tile tile--lead" data-reveal>
-        <span class="tile__shot"><img src="https://awardsonline.com.au/images/online-submission.png" alt="" aria-hidden="true" loading="lazy"></span>
-        <span class="tile__badge">Most Used</span>
+      <a href="#platform" class="tile" data-reveal style="--d:0ms">
         <span class="tile__ico"><svg><use href="#i-file"/></svg></span>
         <h3>Online Submission</h3>
-        <p>Raise the bar of your awards integrity by giving entrants a contemporary interface that lets them craft an award winning submission in a secure environment, with auto saving throughout.</p>
+        <p>A contemporary interface entrants can trust, with auto saving, secure storage and supporting file uploads built in.</p>
         <span class="tile__more">Explore submission <svg><use href="#i-arrow-r"/></svg></span>
       </a>
 
       <a href="#platform" class="tile" data-reveal style="--d:70ms">
         <span class="tile__ico"><svg><use href="#i-clipboard"/></svg></span>
         <h3>Easy Shortlisting</h3>
-        <p>Judges score on any device, in their own time, and shortlists form automatically.</p>
+        <p>Judges score on any device in their own time, and shortlists form automatically from accurate, tallied results.</p>
         <span class="tile__more">Explore judging <svg><use href="#i-arrow-r"/></svg></span>
       </a>
 
       <a href="#platform" class="tile" data-reveal style="--d:140ms">
         <span class="tile__ico"><svg><use href="#i-chart"/></svg></span>
         <h3>Manage Submission</h3>
-        <p>Monitor progress across registrations, entries and judges from one dashboard.</p>
+        <p>Monitor registrations, entries and judges from one dashboard, then generate the reports you need on demand.</p>
         <span class="tile__more">Explore tools <svg><use href="#i-arrow-r"/></svg></span>
       </a>
 
-      <a href="#contact" class="tile tile--wide" data-reveal style="--d:70ms">
+      <a href="#contact" class="tile" data-reveal style="--d:0ms">
         <span class="tile__ico"><svg><use href="#i-shield"/></svg></span>
         <h3>Security and Integrity</h3>
-        <p>Entrants and judges work inside a protected environment with role based access, conflict of interest handling and a full audit trail, so the credibility of your program holds up to scrutiny.</p>
+        <p>Role based access, conflict of interest handling and a full audit trail keep the credibility of your program intact.</p>
         <span class="tile__more">Talk about security <svg><use href="#i-arrow-r"/></svg></span>
       </a>
 
-      <a href="#contact" class="tile tile--wide" data-reveal style="--d:140ms">
+      <a href="#contact" class="tile" data-reveal style="--d:70ms">
         <span class="tile__ico"><svg><use href="#i-sliders"/></svg></span>
         <h3>Built Around Your Program</h3>
-        <p>Categories, criteria, weightings and rounds are configured to match the awards you already run, carrying your branding throughout rather than asking you to change your process.</p>
+        <p>Categories, criteria, weightings and rounds are configured to match the awards you already run, in your branding.</p>
         <span class="tile__more">Discuss your setup <svg><use href="#i-arrow-r"/></svg></span>
       </a>
 
-      <a href="#contact" class="tile tile--wide" data-reveal style="--d:210ms">
+      <a href="#contact" class="tile" data-reveal style="--d:140ms">
         <span class="tile__ico"><svg><use href="#i-headset"/></svg></span>
         <h3>Support That Answers</h3>
-        <p>Real people who know awards programs, on hand for your team, your entrants and your judges through setup, the entry window and every key date that follows.</p>
+        <p>Real people who know awards programs, on hand for your team, your entrants and your judges through every key date.</p>
         <span class="tile__more">Meet the team <svg><use href="#i-arrow-r"/></svg></span>
       </a>
     </div>
@@ -1109,26 +1090,36 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
       <p>Tell us about your awards program and we will show you how AwardsOnline would run it.</p>
     </div>
 
-    <div class="ctiles">
-      <div class="ctile" data-reveal style="--d:0ms">
-        <span class="ctile__ico"><svg><use href="#i-phone"/></svg></span>
-        <b>Phone</b><a href="tel:+61359409763">+613 5940 9763</a>
-      </div>
-      <div class="ctile" data-reveal style="--d:70ms">
-        <span class="ctile__ico"><svg><use href="#i-mobile"/></svg></span>
-        <b>Mobile</b><a href="tel:+61456792117">+614 5679 2117</a>
-      </div>
-      <div class="ctile" data-reveal style="--d:140ms">
-        <span class="ctile__ico"><svg><use href="#i-mail"/></svg></span>
-        <b>Email</b><a href="mailto:hello@awardsonline.com.au">hello@awardsonline.com.au</a>
-      </div>
-      <div class="ctile" data-reveal style="--d:210ms">
-        <span class="ctile__ico"><svg><use href="#i-pin"/></svg></span>
-        <b>Address</b><span>3 Pickerel Avenue<br>Clyde North VIC 3978</span>
-      </div>
-    </div>
+    <div class="contact__grid">
+      <aside class="info-card" data-reveal="left">
+        <h3>Contact Information</h3>
+        <p>Reach the team in Victoria. We reply to every enquiry personally.</p>
+        <div class="info-list">
+          <div class="info-row">
+            <span class="info-row__ico"><svg><use href="#i-phone"/></svg></span>
+            <div><b>Phone</b><a href="tel:+61359409763">+613 5940 9763</a></div>
+          </div>
+          <div class="info-row">
+            <span class="info-row__ico"><svg><use href="#i-mobile"/></svg></span>
+            <div><b>Mobile</b><a href="tel:+61456792117">+614 5679 2117</a></div>
+          </div>
+          <div class="info-row">
+            <span class="info-row__ico"><svg><use href="#i-mail"/></svg></span>
+            <div><b>Email</b><a href="mailto:hello@awardsonline.com.au">hello@awardsonline.com.au</a></div>
+          </div>
+          <div class="info-row">
+            <span class="info-row__ico"><svg><use href="#i-pin"/></svg></span>
+            <div><b>Address</b><span>3 Pickerel Avenue<br>Clyde North VIC 3978, Australia</span></div>
+          </div>
+        </div>
+        <div class="info-card__social">
+          <a href="https://twitter.com/AwardsOnline1" target="_blank" rel="noopener" aria-label="Awards Online on X"><svg><use href="#i-tw"/></svg></a>
+          <a href="https://www.facebook.com/AwardsonlineAU/" target="_blank" rel="noopener" aria-label="Awards Online on Facebook"><svg><use href="#i-fb"/></svg></a>
+          <a href="https://www.youtube.com/channel/UCH5i1kYFk-L9QbhJOQN9L-g" target="_blank" rel="noopener" aria-label="Awards Online on YouTube"><svg><use href="#i-yt"/></svg></a>
+        </div>
+      </aside>
 
-    <div class="form-wrap" data-reveal>
+      <div data-reveal="right">
       <div class="form-card">
         <div class="form-card__head">
           <h3>Send Us a Message</h3>
@@ -1194,6 +1185,7 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
             <span>Your information stays private and is never shared with third parties.</span>
           </div>
         </form>
+        </div>
       </div>
     </div>
   </div>
@@ -1203,8 +1195,8 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
 <footer class="footer">
   <span class="footer__glow"></span>
   <div class="shell">
-    <div class="footer__top">
-      <div class="footer__brandcol">
+    <div class="footer__grid">
+      <div>
         <a href="#home" class="brand brand--footer" aria-label="Awards Online home">
           <img src="https://awardsonline.com.au/images/logo3.png" alt="Awards Online" width="200" height="40">
         </a>
@@ -1218,10 +1210,7 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
           <a href="https://www.youtube.com/channel/UCH5i1kYFk-L9QbhJOQN9L-g" target="_blank" rel="noopener" aria-label="Awards Online on YouTube"><svg><use href="#i-yt"/></svg></a>
         </div>
       </div>
-      <a href="#contact" class="btn btn--coral btn--lg">Start Your Awards Program <svg><use href="#i-arrow-r"/></svg></a>
-    </div>
 
-    <div class="footer__cols">
       <div>
         <h4>Useful Links</h4>
         <nav class="footer__links" aria-label="Footer links">
@@ -1233,6 +1222,7 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
           <a href="#">Privacy Policy</a>
         </nav>
       </div>
+
       <div>
         <h4>Features</h4>
         <nav class="footer__links" aria-label="Footer features">
@@ -1243,6 +1233,7 @@ sup{font-size:.48em;top:-.85em;position:relative;font-weight:600}
           <a href="#contact">Support</a>
         </nav>
       </div>
+
       <div>
         <h4>Contact Us</h4>
         <ul class="footer__contact">

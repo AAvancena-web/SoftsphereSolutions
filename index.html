@@ -123,7 +123,6 @@ ul{margin:0;padding:0;list-style:none}
 .eyebrow{
   display:inline-flex;
   align-items:center;
-  gap:10px;
   font-family:var(--font-body);
   font-size:.775rem;
   font-weight:800;
@@ -132,14 +131,7 @@ ul{margin:0;padding:0;list-style:none}
   color:var(--blue-600);
   margin-bottom:18px;
 }
-.eyebrow::before{
-  content:"";
-  width:30px;height:2px;
-  background:linear-gradient(90deg,var(--blue-500),var(--blue-300));
-  border-radius:2px;
-}
 .eyebrow--light{color:var(--blue-300)}
-.eyebrow--light::before{background:linear-gradient(90deg,var(--blue-300),rgba(124,198,250,.2))}
 
 /* ---------- Section heading ---------- */
 .s-head{margin-bottom:clamp(44px,5vw,68px)}
@@ -848,8 +840,8 @@ ul{margin:0;padding:0;list-style:none}
 .info-row:hover .info-row__ico{background:var(--blue-600);color:var(--white)}
 .info-row__ico svg{width:19px;height:19px}
 .info-row b{display:block;font-size:.73rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--silver-500);margin-bottom:5px}
-.info-row a,.info-row span{color:var(--white);font-weight:700;font-size:1rem;line-height:1.5;display:block}
-.info-row a:hover{color:var(--blue-300)}
+.info-row>div a,.info-row>div span{color:var(--white);font-weight:700;font-size:1rem;line-height:1.5;display:block}
+.info-row>div a:hover{color:var(--blue-300)}
 .info-card__social{display:flex;gap:11px;margin-top:28px;padding-top:26px;border-top:1px solid rgba(124,198,250,.16);position:relative}
 .info-card__social a{
   width:42px;height:42px;border-radius:50%;
@@ -909,28 +901,6 @@ ul{margin:0;padding:0;list-style:none}
 }
 .form-alert.is-shown{display:flex;animation:drawerIn .5s var(--ease-out) backwards}
 .form-alert svg{width:19px;height:19px;color:var(--blue-600);flex:none}
-
-/* Map */
-.map-wrap{
-  margin-top:26px;
-  border-radius:var(--r-xl);overflow:hidden;
-  border:7px solid var(--white);
-  box-shadow:var(--sh-md);
-  position:relative;
-  height:380px;
-  background:var(--silver-200);
-}
-.map-wrap iframe{width:100%;height:100%;border:0;display:block;filter:grayscale(.28) contrast(1.05)}
-.map-bar{
-  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
-  background:var(--white);
-  border:1px solid var(--silver-200);
-  border-radius:var(--r-md);
-  padding:16px 22px;margin-top:16px;
-  box-shadow:var(--sh-xs);
-}
-.map-bar__txt{display:flex;align-items:center;gap:13px;font-weight:700;color:var(--navy-900);font-size:.96rem}
-.map-bar__txt svg{width:19px;height:19px;color:var(--blue-600);flex:none}
 
 /* ---------- Footer ---------- */
 .footer{background:var(--navy-950);color:var(--silver-400);padding-top:clamp(62px,7vw,96px);position:relative;overflow:hidden}
@@ -1742,18 +1712,6 @@ html{scrollbar-color:var(--blue-500) var(--silver-100)}
               <button type="submit" class="btn btn--primary btn--lg btn--block">Send Message <svg><use href="#i-arrow-r"/></svg></button>
             </div>
           </form>
-        </div>
-
-        <!-- Google Map -->
-        <div class="map-wrap">
-          <iframe
-            title="SoftSphere Solutions office location on Google Maps"
-            src="https://www.google.com/maps?q=100%20Market%20Street%2C%20Sydney%20NSW%202000%2C%20Australia&z=16&output=embed"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-        </div>
-        <div class="map-bar">
-          <span class="map-bar__txt"><svg><use href="#i-pin"/></svg>Level 12, 100 Market Street, Sydney NSW 2000</span>
-          <a class="btn btn--soft" href="https://www.google.com/maps/dir/?api=1&destination=100+Market+Street+Sydney+NSW+2000+Australia" target="_blank" rel="noopener">Get Directions <svg><use href="#i-arrow-r"/></svg></a>
         </div>
       </div>
     </div>
